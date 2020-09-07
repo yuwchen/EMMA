@@ -8,21 +8,66 @@ You can use pip to install Python depedencies.
 ```
 pip install -r requirements.txt 
 ```
-### Usage
+## Usage
 
-First, you have to prepare the noisy audio files(*.wav), clean audio files(*.wav) and EMMA data(*.mat). and put the EMMA data under the same folder as clean audio files.
-* Step 1 training data 
+### Step 1 prepare training data 
 
-In this step, we will transfer the audio file to spectrum and split the data in every 64 frames. In synthesis task, the model input only use EMMA data, hence, <noisy_path> is not needed. The command line is displayed below:
+Transform waveform to spectrogram by STFT, and divide spectrogram by frame size 64. 
+
+Setup your dataset to be the following structure.
+
 ```
-python gen_pt.py --noisy_path < noisy_path (only needed in denoise mode )> \   
-    --clean_path <clean_path > \       
-    --out_path <out_path> \       
-    --pwg_path <parallel_wavegan_path> \       
-    --task <denoise / synthesis>
+/path/to/clean/
+├── utt_1.wav
+├── utt_1.mat
+│   ...
+│   ...
+├── utt_N.wav
+└── utt_N.mat
+```
+where *.wav is the clean audio file and *.mat is the corresponding EMMA data
+
+
+#### speech enhancement
+For speech enhancement, you need to prepare noisy dataset.
+The noisy speech should have the same name as its corresponding clean speech. 
+```
+/path/to/noisy/data/
+├── SNR1
+│   ├── noise_type1
+│.  │.  ├──utt_1.wav
+├── SNR2
+│   ├── noise_type2
+│.  │.  ├──utt_1.wav
+│   ...
+└── SNR_N
+    ├── noise_typeN
+    │.  ├──utt_1.wav    
+    
 ```
   
-* Step 2 training mode
+Then, generate the training data for speech enhancement.
+```
+python gen_pt.py --noisy_path <noisy_path> \   
+    --clean_path <clean_path> \       
+    --out_path <out_path> \       
+    --task <denoise>
+```
+
+#### speech synthesis
+
+Generate the training data for speech synthesis.
+
+```
+python gen_pt.py --clean_path <clean_path > \       
+    --out_path <out_path> \       
+    --pwg_path <parallel_wavegan_path> \       
+    --task <synthesis>
+```
+
+
+  
+### Step 2 use pre-trained model or train your own model
 
 In this step, we used the data generated before to train the model. same as the first step, the model input only use EMMA data, <test_noisy> is not needed. we offer several example model structure. Go check ```/main/run.sh``` for further information
 ```
@@ -34,9 +79,9 @@ python main.py --mode <train / test> \
             --model BLSTM_05 \
             --task <denoise / synthesis>
 ```
-### License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
-### Acknowledgments
+## Acknowledgments
 * [Bio-ASP Lab](https://bio-asplab.citi.sinica.edu.tw), CITI, Academia Sinica, Taipei, Taiwan
