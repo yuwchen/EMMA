@@ -28,7 +28,7 @@ Setup yout dataset to be the following structure.
 where ***.wav** is the clean audio file and ***.mat** is the corresponding EMMA data
 
 
-* Speech enhancement
+* **Speech enhancement**
 
 For speech enhancement, you need to prepare noisy dataset.  
 The noisy speech should have the same name as its corresponding clean speech. 
@@ -52,10 +52,10 @@ Then, generate the training data for speech enhancement.
 python gen_pt.py --noisy_path </path/to/noisy/data/> \   
     --clean_path </path/to/clean/data/> \       
     --out_path </path/to/training/data/> \       
-    --task <denoise>
+    --task denoise
 ```
 
-* Speech synthesis
+* **Speech synthesis**
 
 Generate the training data for speech synthesis.  
 
@@ -63,16 +63,16 @@ Generate the training data for speech synthesis.
 python gen_pt.py --clean_path </path/to/clean/data/> \       
     --out_path </ptah/to/output/data/> \       
     --pwg_path </path/to/parallel_wavegan/> \       
-    --task <synthesis>
+    --task synthesis
 ```
 
   
 ### Step 2 - Train your own model
 
-* Speech enhancement
+* **Speech enhancement**
 
 
-* Speech synthesis
+* **Speech synthesis**
 
 simple EMMA-to-speech model
 ```
