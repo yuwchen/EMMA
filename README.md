@@ -22,4 +22,4 @@ python main.py --mode <train / test> \
             --task < denoise / synthesis>
 ```
 ### Acknowledgments
-* [Bio-ASP Lab](./https://bio-asplab.citi.sinica.edu.tw/), CITI, Academia Sinica, Taipei, Taiwan
+* [Bio-ASP Lab](https://bio-asplab.citi.sinica.edu.tw), CITI, Academia Sinica, Taipei, Taiwan
