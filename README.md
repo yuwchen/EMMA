@@ -12,3 +12,14 @@ python gen_pt.py --noisy_path < noisy_path (only needed in denoise mode )> \
 ```
 
 * Step 2 training mode
+```
+python main.py --mode <train / test> \
+            --train_path <train_path>\
+            --test_noisy < test_noisy >\
+            --test_clean < test_clean > \
+            --writer <log_path> \
+            --model BLSTM_05 \
+            --task < denoise / synthesis>
+```
+### Acknowledgments
+* [Bio-ASP Lab](/https://bio-asplab.citi.sinica.edu.tw/), CITI, Academia Sinica, Taipei, Taiwan
