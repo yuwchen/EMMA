@@ -36,7 +36,7 @@ python main.py --mode <train / test> \
 ```
 ### License
 
-This project is licensed under the MIT License - see the [LICENSE](LLICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ### Acknowledgments
 * [Bio-ASP Lab](https://bio-asplab.citi.sinica.edu.tw), CITI, Academia Sinica, Taipei, Taiwan
