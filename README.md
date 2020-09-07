@@ -90,23 +90,30 @@ python main.py --mode train \
             --train_path </path/to/training/data/>\
             --writer </path/to/log/file/> \
             --model BLSTM_06 \
-            --encode_loss \
+            --encode_loss \ 
             --task synthesis
             
 ```
 
 
-
 ### Step 3 - Test the results
+
+* **Speech enhancement**
+
+
+* **Speech synthesis**
+
+
+simple EMMA-to-speech model
+
+
+audio-guided EMMA-to-speech model
 ```
-python main.py --mode <train / test> \
-            --train_path <train_path>\
-            --test_noisy <test_noisy >\
-            --test_clean <test_clean > \
-            --writer <log_path> \
-            --model BLSTM_05 \
-            --task <denoise / synthesis>
-            
+python main.py --mode test \
+               --test_clean </path/to/clean> \
+               --encode_loss \ 
+               --model BLSTM_06 \
+               --task synthesis       
 ```
 
 
