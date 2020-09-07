@@ -24,7 +24,7 @@ python gen_pt.py --noisy_path < noisy_path (only needed in denoise mode )> \
   
 * Step 2 training mode
 
-In this step, we used the data generated before to train the model. same as the first step, the model input only use EMMA data, <test_noisy> is not needed. 
+In this step, we used the data generated before to train the model. same as the first step, the model input only use EMMA data, <test_noisy> is not needed. we offer several example model structure. Go check ```/main/run.sh``` for further information
 ```
 python main.py --mode <train / test> \
             --train_path <train_path>\
