@@ -71,6 +71,25 @@ python gen_pt.py --clean_path </path/to/clean/data> \
 
 * **Speech enhancement**
 
+```
+python main.py --mode train \
+            --train_path </path/to/training/data> \
+            --writer </path/to/logs> \
+            --model <Model_name> \
+            --task denoise
+
+```           
+**Model_name**
+
+| Method                                            | TDNN          | BLSTM         |
+| ------------------------------------------------- |:-------------:|:-------------:|
+| audio only                                        | DDAE_01       | BLSTM_01      |
+| direct concatenate                                | DDAE_02       | BLSTM_02      |
+| Unilateral encoding (EMMA encoder)                | DDAE_03       | BLSTM_03      |
+| Bilateral encoding (EMMA encoder & audio encoder) | DDAE_04       | BLSTM_04      |
+
+
+
 
 * **Speech synthesis**
 
@@ -100,11 +119,25 @@ python main.py --mode train \
 
 * **Speech enhancement**
 
+```
+python main.py --mode test \
+               --test_noisy </path/to/noisy> \
+               --test_clean </path/to/clean> \
+               --model <Model_name> \
+               --task denoise      
+```
+
 
 * **Speech synthesis**
 
 
 simple EMMA-to-speech model
+```
+python main.py --mode test \
+               --test_clean </path/to/clean> \
+               --model BLSTM_05 \
+               --task synthesis       
+```
 
 
 audio-guided EMMA-to-speech model
