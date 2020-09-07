@@ -1,6 +1,8 @@
 # EMMA
-### Requirement
-
+### Prerequisites
+* Ubuntu 18.04
+* Python 3.6
+* CUDA 11.0
 ### Usage
 
 * Step 1 training data \
