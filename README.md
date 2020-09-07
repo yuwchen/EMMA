@@ -50,9 +50,9 @@ The noisy speech should have the same name as its corresponding clean speech.
 Then, generate the training data for speech enhancement.  
 ```
 python gen_pt.py --noisy_path </path/to/noisy/data> \   
-    --clean_path </path/to/clean/data> \       
-    --out_path </path/to/training/data> \       
-    --task denoise
+                 --clean_path </path/to/clean/data> \       
+                 --out_path </path/to/training/data> \       
+                 --task denoise
 ```
 
 * **Speech synthesis**
@@ -61,9 +61,9 @@ Generate the training data for speech synthesis.
 
 ```
 python gen_pt.py --clean_path </path/to/clean/data> \       
-    --out_path </ptah/to/output/data> \       
-    --pwg_path </path/to/parallel_wavegan> \       
-    --task synthesis
+                 --out_path </ptah/to/output/data> \       
+                 --pwg_path </path/to/parallel_wavegan> \       
+                 --task synthesis
 ```
 
   
@@ -73,10 +73,10 @@ python gen_pt.py --clean_path </path/to/clean/data> \
 
 ```
 python main.py --mode train \
-            --train_path </path/to/training/data> \
-            --writer </path/to/logs> \
-            --model <Model_name> \
-            --task denoise
+               --train_path </path/to/training/data> \
+               --writer </path/to/logs> \
+               --model <Model_name> \
+               --task denoise
 
 ```           
 **Model_name**
@@ -96,21 +96,21 @@ python main.py --mode train \
 simple EMMA-to-speech model
 ```
 python main.py --mode train \
-            --train_path </path/to/training/data>\
-            --writer </path/to/log/file> \
-            --model BLSTM_05 \
-            --task synthesis
+               --train_path </path/to/training/data>\
+               --writer </path/to/log/file> \
+               --model BLSTM_05 \
+               --task synthesis
             
 ```
 
 audio-guided EMMA-to-speech model
 ```
 python main.py --mode train \
-            --train_path </path/to/training/data>\
-            --writer </path/to/log/file> \
-            --model BLSTM_06 \
-            --encode_loss \ 
-            --task synthesis
+               --train_path </path/to/training/data>\
+               --writer </path/to/log/file> \
+               --model BLSTM_06 \
+               --encode_loss \ 
+               --task synthesis
             
 ```
 
