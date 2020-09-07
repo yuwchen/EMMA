@@ -11,7 +11,7 @@ python gen_pt.py --noisy_path < noisy_path (only needed in denoise mode )> \
     --pwg_path <parallel_wavegan_path> \       
     --task < denoise / synthesis>
 ```
-    In synthesis task, the model input only use EMMA data, hence, noisy_path is not needed. 
+In synthesis task, the model input only use EMMA data, hence, noisy_path is not needed. 
 * Step 2 training mode
 ```
 python main.py --mode <train / test> \
