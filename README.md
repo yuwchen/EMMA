@@ -3,6 +3,9 @@
 * Ubuntu 18.04
 * Python 3.6
 * CUDA 11.0
+
+You can use pip to install Python depedencies.
+```pip install -r requirements.txt ```
 ### Usage
 
 * Step 1 training data 
