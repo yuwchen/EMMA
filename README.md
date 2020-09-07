@@ -10,11 +10,11 @@ pip install -r requirements.txt
 ```
 ## Usage
 
-### Step 1 prepare training data 
+### Step 1 - Prepare training data 
 
 Transform waveform to spectrogram by STFT, and divide spectrogram by frame size 64. 
 
-Setup your dataset to be the following structure.
+Setup yout dataset to be the following structure.
 
 ```
 /path/to/clean/
@@ -25,11 +25,12 @@ Setup your dataset to be the following structure.
 ├── utt_N.wav
 └── utt_N.mat
 ```
-where *.wav is the clean audio file and *.mat is the corresponding EMMA data
+where ***.wav** is the clean audio file and ***.mat** is the corresponding EMMA data
 
 
-#### speech enhancement
-For speech enhancement, you need to prepare noisy dataset.
+* Speech enhancement
+
+For speech enhancement, you need to prepare noisy dataset.  
 The noisy speech should have the same name as its corresponding clean speech. 
 ```
 /path/to/noisy/data/
@@ -46,30 +47,57 @@ The noisy speech should have the same name as its corresponding clean speech.
     
 ```
   
-Then, generate the training data for speech enhancement.
+Then, generate the training data for speech enhancement.  
 ```
-python gen_pt.py --noisy_path <noisy_path> \   
-    --clean_path <clean_path> \       
-    --out_path <out_path> \       
+python gen_pt.py --noisy_path </path/to/noisy/data/> \   
+    --clean_path </path/to/clean/data/> \       
+    --out_path </path/to/training/data/> \       
     --task <denoise>
 ```
 
-#### speech synthesis
+* Speech synthesis
 
-Generate the training data for speech synthesis.
+Generate the training data for speech synthesis.  
 
 ```
-python gen_pt.py --clean_path <clean_path > \       
-    --out_path <out_path> \       
-    --pwg_path <parallel_wavegan_path> \       
+python gen_pt.py --clean_path </path/to/clean/data/> \       
+    --out_path </ptah/to/output/data/> \       
+    --pwg_path </path/to/parallel_wavegan/> \       
     --task <synthesis>
 ```
 
-
   
-### Step 2 use pre-trained model or train your own model
+### Step 2 - Train your own model
 
-In this step, we used the data generated before to train the model. same as the first step, the model input only use EMMA data, <test_noisy> is not needed. we offer several example model structure. Go check ```/main/run.sh``` for further information
+* Speech enhancement
+
+
+* Speech synthesis
+
+simple EMMA-to-speech model
+```
+python main.py --mode train \
+            --train_path </path/to/training/data/>\
+            --writer </path/to/log/file/> \
+            --model BLSTM_05 \
+            --task synthesis
+            
+```
+
+audio-guided EMMA-to-speech model
+```
+python main.py --mode train \
+            --train_path </path/to/training/data/>\
+            --writer </path/to/log/file/> \
+            --model BLSTM_06 \
+            --encode_loss \
+            --task synthesis
+            
+```
+
+
+
+### Step 3 - Test the results
 ```
 python main.py --mode <train / test> \
             --train_path <train_path>\
@@ -78,7 +106,11 @@ python main.py --mode <train / test> \
             --writer <log_path> \
             --model BLSTM_05 \
             --task <denoise / synthesis>
+            
 ```
+
+
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
