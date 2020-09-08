@@ -8,7 +8,7 @@ def get_args():
     parser.add_argument('--clean_path', type=str)
     parser.add_argument('--task', type=str, default='denoise')  # denoise / synthesis 
     parser.add_argument('--out_path', type=str, default='./EMMA_data_pt/')
-    parser.add_argument('--pwg_path', type=str, default='')
+    parser.add_argument('--pwg_path', type=str, default='./pretrain_model')
     args = parser.parse_args()
     return args
 
