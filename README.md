@@ -58,11 +58,9 @@ python gen_pt.py --noisy_path </path/to/noisy/data> \
 * **Speech synthesis**
 
 Generate the training data for speech synthesis.  
-
 ```
 python gen_pt.py --clean_path </path/to/clean/data> \       
                  --out_path </ptah/to/output/data> \       
-                 --pwg_path </path/to/parallel_wavegan> \       
                  --task synthesis
 ```
 
