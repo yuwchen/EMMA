@@ -14,7 +14,7 @@ pip install -r requirements.txt
 
 Transform waveform to spectrogram by STFT, and divide spectrogram by frame size 64. 
 
-Setup yout dataset to be the following structure.
+Setup your dataset to be the following structure.
 
 ```
 /path/to/clean
