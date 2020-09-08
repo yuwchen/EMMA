@@ -1,6 +1,7 @@
 import torch.nn as nn
 import torch.nn.functional as F
-import torch, mkl
+import torch
+#import mkl
 import os, sys, time, numpy as np, librosa, scipy, pandas as pd,pdb
 from tqdm import tqdm
 from util import *
@@ -51,7 +52,7 @@ class Trainer:
         self.args = args
             
         config_path = f'{args.pwg_path}/config.yml'
-        model_path  = f'{args.pwg_path}/checkpoint-120000steps.pkl'
+        model_path  = f'{args.pwg_path}/checkpoint-400000steps.pkl'
 
         self.config = get_config(config_path)
         self.mel_basis = torch.nn.Parameter(torch.load(f'{args.pwg_path}/mel_basis.pt')).to(device)
@@ -179,7 +180,7 @@ class Trainer:
             
     def test(self):
         # load model
-        mkl.set_num_threads(1)
+        #mkl.set_num_threads(1)
         self.model.eval()
         checkpoint = torch.load(self.model_path)
         self.model.load_state_dict(checkpoint['model'])
@@ -231,6 +232,7 @@ class Trainer:
         emma, spec = data[:,:,513:],data[:,:,:513]
         emma, spec = emma.to(device).type(torch.float32), spec.to(device).type(torch.float32)
         pred        = self.model(emma)
+
         loss        = self.criterion(pred, spec)
         self.train_loss += loss.item()
         self.optimizer.zero_grad()

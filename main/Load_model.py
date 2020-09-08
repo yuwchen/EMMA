@@ -80,6 +80,7 @@ def Load_data(args):
         filepaths = get_filepaths(f'{args.train_path}/Noisy','.pt') 
         train_paths,val_paths = train_test_split(filepaths,test_size=0.1,random_state=999)
         train_dataset, val_dataset = CustomDataset(train_paths,f'{args.train_path}/clean'), CustomDataset(val_paths,f'{args.train_path}/clean')
+
     elif args.task=='synthesis':
         filepaths = get_filepaths(f'{args.train_path}/clean','.pt')
         train_paths,val_paths = train_test_split(filepaths,test_size=0.1,random_state=999)

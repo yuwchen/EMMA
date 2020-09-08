@@ -20,6 +20,7 @@ def read_emma(emma_path,step=2,mode='synthesis'):
 
     mat = scipy.io.loadmat(emma_path)
     emma = np.asarray(mat['mxy'])
+    emma = emma.astype('float32')
     emma = np.array(emma.T)
     #emma = align_signals(emma)
     emma = sklearn.preprocessing.normalize(emma, norm="max",axis=0)

@@ -4,11 +4,11 @@ from util import *
 
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--noisy_path', type=str, default='../../EMMA/EMMA_data/train/Noisy')
-    parser.add_argument('--clean_path', type=str, default='../../EMMA/EMMA_data/train/clean')
+    parser.add_argument('--noisy_path', type=str, default='')
+    parser.add_argument('--clean_path', type=str)
     parser.add_argument('--task', type=str, default='denoise')  # denoise / synthesis 
-    parser.add_argument('--out_path', type=str, default='../EMMA_data_pt/train')
-    parser.add_argument('--pwg_path', type=str, default='./pretrain_model')
+    parser.add_argument('--out_path', type=str, default='./EMMA_data_pt/')
+    parser.add_argument('--pwg_path', type=str, default='')
     args = parser.parse_args()
     return args
 
@@ -42,7 +42,10 @@ if __name__ == '__main__':
         for wav_file in tqdm(noisy_files):
             wav,sr = librosa.load(wav_file,sr=16000)
             wav_name = wav_file.split('/')[-1]
-            nout_path = wav_file.replace(train_path,f'{out_path}/Noisy').split('.w')[0]
+            noise = wav_file.split(os.sep)[-2]
+            snr = wav_file.split(os.sep)[-3]
+            nout_path = os.path.join(out_path,'Noisy',snr,noise,wav_name.split(".")[0])
+            
             spec = torch.from_numpy(make_spectrum(y=wav)[0]).t()
             for i in np.arange(spec.shape[0]//n_frame):
                 nout_name = nout_path+'_'+str(i)+'.pt'
@@ -55,11 +58,14 @@ if __name__ == '__main__':
         wav_name = wav_file.split('/')[-1]
         c_file = os.path.join(clean_path,wav_name)
         c_wav,sr = librosa.load(c_file,sr=16000)
-        cout_path = wav_file.replace(clean_path,f'{out_path}/clean').split('.w')[0]
+        c_wav = c_wav.astype('float32')
+        cout_path = os.path.join(out_path,'clean') 
+
         cdata = torch.from_numpy(make_spectrum(y=c_wav)[0]).t() if args.task=='denoise' else get_mel(c_wav,config,mel_basis,mean,scale)[0]
         mat = read_emma(c_file.replace('.wav','.mat'),step,args.task)
+        
         cdata = pad_data(cdata,mat)
         for i in np.arange(cdata.shape[0]//n_frame):
-            cout_name = cout_path+'_'+str(i)+'.pt'
+            cout_name = os.path.join(cout_path,wav_name.split(".")[0]+'_'+str(i)+'.pt')
             check_folder(cout_name)
             torch.save( cdata[i*n_frame:(i+1)*n_frame] ,cout_name)

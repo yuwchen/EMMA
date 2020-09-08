@@ -75,7 +75,7 @@ if __name__ == '__main__':
     # tensorboard
     writer = SummaryWriter(args.writer)
 
-    exec (f"from models.{args.model.split('_')[0]} import {args.model} as model")
+    exec (f"from model.{args.model.split('_')[0]} import {args.model} as model")
     model     = model()
 #     if args.update=='all':
 #         param=model
