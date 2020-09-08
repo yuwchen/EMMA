@@ -81,8 +81,8 @@ python main.py --mode train \
 
 | Method                                            | TDNN          | BLSTM         |
 | ------------------------------------------------- |:-------------:|:-------------:|
-| audio only                                        | DDAE_01       | BLSTM_01      |
-| direct concatenate                                | DDAE_02       | BLSTM_02      |
+| Audio only                                        | DDAE_01       | BLSTM_01      |
+| Direct concatenate                                | DDAE_02       | BLSTM_02      |
 | Unilateral encoding (EMMA encoder)                | DDAE_03       | BLSTM_03      |
 | Bilateral encoding (EMMA encoder & audio encoder) | DDAE_04       | BLSTM_04      |
 
