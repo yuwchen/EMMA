@@ -34,10 +34,10 @@ For speech enhancement, you need to prepare noisy dataset.
 The noisy speech should have the same name as its corresponding clean speech. 
 ```
 /path/to/noisy/data
-├── SNR1
+├── SNR_1
 │   ├── noise_type1
 │.  │.  ├──utt_1.wav
-├── SNR2
+├── SNR_2
 │   ├── noise_type2
 │.  │.  ├──utt_1.wav
 │   ...
