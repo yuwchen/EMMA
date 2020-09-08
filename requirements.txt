@@ -8,4 +8,6 @@ pystoi==0.3.3
 scipy==1.5.2                    
 tensorboardx==2.1                
 torch==1.5.1                    
-tqdm==4.48.0                   
+tqdm==4.48.0 
+pyyaml
+parallel_wavegan                  
