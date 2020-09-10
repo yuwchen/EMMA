@@ -12,7 +12,6 @@ pip install -r requirements.txt
 
 ### Step 1 - Prepare training data 
 
-Transform waveform to spectrogram by STFT, and divide spectrogram by frame size 64. 
 
 Setup your dataset to be the following structure.
 
@@ -46,8 +45,11 @@ The noisy speech should have the same name as its corresponding clean speech.
     │.  ├──utt_1.wav    
     
 ```
+
+Use gen_pt.py to transform waveform to spectrogram by STFT, and divide spectrogram by frame size 64. 
+
   
-Then, generate the training data for speech enhancement.  
+Generate the training data for speech enhancement.  
 ```
 python gen_pt.py --noisy_path </path/to/noisy/data> \   
                  --clean_path </path/to/clean/data> \       
