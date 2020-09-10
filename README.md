@@ -46,10 +46,10 @@ The noisy speech should have the same name as its corresponding clean speech.
     
 ```
 
-Use gen_pt.py to transform waveform to spectrogram by STFT, and divide spectrogram by frame size 64. 
+Use gen_pt.py to generate the training data.
+It will transform waveform to spectrogram by STFT, and divide spectrogram by frame size 64. 
 
-  
-Generate the training data for speech enhancement.  
+Generate the training data for speech enhancement:  
 ```
 python gen_pt.py --noisy_path </path/to/noisy/data> \   
                  --clean_path </path/to/clean/data> \       
@@ -59,7 +59,7 @@ python gen_pt.py --noisy_path </path/to/noisy/data> \
 
 * **Speech synthesis**
 
-Generate the training data for speech synthesis.  
+Generate the training data for speech synthesis:  
 ```
 python gen_pt.py --clean_path </path/to/clean/data> \       
                  --out_path </ptah/to/output/data> \       
